@@ -1,0 +1,57 @@
+<div *ngIf="customer$ | async as customer; else cadForm">
+    <form class="needs-validation" novalidate [formGroup]="form" style="padding-top: 10px">
+        <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="name">Nome</label>
+            <input type="text" class="form-control" id="name" placeholder="Nome" formControlName="name" [(ngModel)]="customer.name">
+        </div>
+        </div>
+    
+        <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="type">E-mail</label>
+            <input type="email" class="form-control" id="email" placeholder="E-mail" formControlName="email" [(ngModel)]="customer.email">
+        </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+            <label for="type">Idade</label>
+            <input type="number" class="form-control" id="age" placeholder="Idade" formControlName="age" [(ngModel)]="customer.age">
+            </div>
+        </div>
+    
+        <div style="margin-top: 10px">
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
+        </div>
+    </form>
+</div>
+
+<ng-template #cadForm>
+    <form class="needs-validation" novalidate [formGroup]="form" style="padding-top: 10px">
+        <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="name">Nome</label>
+            <input type="text" class="form-control" id="name" placeholder="Nome" formControlName="name">
+        </div>
+        </div>
+    
+        <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="type">E-mail</label>
+            <input type="email" class="form-control" id="email" placeholder="E-mail" formControlName="email">
+        </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+            <label for="type">Idade</label>
+            <input type="number" class="form-control" id="age" placeholder="Idade" formControlName="age">
+            </div>
+        </div>
+    
+        <div style="margin-top: 10px">
+        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
+        </div>
+    </form>
+</ng-template>

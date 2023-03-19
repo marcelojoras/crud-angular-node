@@ -1,0 +1,36 @@
+<h1>Lista de clientes</h1>
+<div class="mat-elevation-z5">
+    <table class="table table-hover" *ngIf="customers$ | async as customers; else loadingError">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Idade</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let customer of customers">
+                <td>{{customer.name}}</td>
+                <td>{{customer.email}}</td>
+                <td>{{customer.age}}</td>
+                <td>
+                    <span class="float-right">
+                        <button class="btn btn-outline-primary mb-1 btn-sm" (click)="detalhesCustomer(customer.id)">Detalhes</button>
+                        <button class="btn btn-outline-warning mb-1 btn-sm" (click)="editarCustomer(customer.id)">Atualizar</button>
+                        <button class="btn btn-outline-danger mb-1 btn-sm" (click)="removerCustomer(customer)">Remover</button>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ng-template #loadingError>
+        <div *ngIf="error$ | async; else loading">
+            Erro ao carregar Clientes. Tente novamente mais tarde.
+        </div>
+        <ng-template #loading>
+            <span>Carregando Clientes...</span>
+        </ng-template>
+    </ng-template>
+</div>

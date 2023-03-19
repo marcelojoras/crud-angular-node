@@ -8,5 +8,6 @@ export const environment = {
     messagingSenderId: '430843894942',
     measurementId: 'G-XZ45LK5XDQ',
   },
-  production: false
+  production: false,
+  APICustomers: 'http://localhost:8080/customers'
 };

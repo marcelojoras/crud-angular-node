@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/login/login.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { HomeComponent } from './components/home/home.component';
 import {
   canActivate,
   redirectLoggedInTo,
   redirectUnauthorizedTo,
 } from '@angular/fire/auth-guard';
+import { CustomersListComponent } from './components/customers/customers-list/customers-list.component';
+import { CustomersFormComponent } from './components/customers/customers-form/customers-form.component';
+import { CustomersDetailsComponent } from './components/customers/customers-details/customers-details.component';
 
-const redirectToLogin = () => redirectUnauthorizedTo(['login']);
-const redirectToHome = () => redirectLoggedInTo(['home']);
+const redirectToLogin = () => redirectUnauthorizedTo(['']);
+const redirectToHome = () => redirectLoggedInTo(['customers']);
 
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
-    component: LandingComponent
+    component: LoginComponent,
+    ...canActivate(redirectToHome)
   },
   {
     path: 'login',
@@ -26,12 +26,23 @@ const routes: Routes = [
     ...canActivate(redirectToHome)
   },
   {
-    path: 'sign-up',
-    component: SignUpComponent
+    path: 'customers',
+    component: CustomersListComponent,
+    ...canActivate(redirectToLogin)
   },
   {
-    path: 'home',
-    component: HomeComponent,
+    path: 'customers/create',
+    component: CustomersFormComponent,
+    ...canActivate(redirectToLogin)
+  },
+  {
+    path: 'customers/edit/:id',
+    component: CustomersFormComponent,
+    ...canActivate(redirectToLogin)
+  },
+  {
+    path: 'customers/:id',
+    component: CustomersDetailsComponent,
     ...canActivate(redirectToLogin)
   }
 ];

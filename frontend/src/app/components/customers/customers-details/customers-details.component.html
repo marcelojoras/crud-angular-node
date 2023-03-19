@@ -1,0 +1,18 @@
+<h1>Detalhes do cliente</h1>
+<div class="mat-elevation-z5">
+    <div *ngIf="customer$ | async as customer; else loadingError">
+        <p>ID: {{customer.id}}</p>
+        <p>Nome: {{customer.name}}</p>
+        <p>E-mail: {{customer.email}}</p>
+        <p>Idade: {{customer.age}}</p>
+    </div>
+
+    <ng-template #loadingError>
+        <div *ngIf="error$ | async; else loading">
+            Erro ao carregar Cliente. Tente novamente mais tarde.
+        </div>
+        <ng-template #loading>
+            <span>Carregando Cliente...</span>
+        </ng-template>
+    </ng-template>
+</div>

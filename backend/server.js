@@ -12,6 +12,14 @@ app.use(express.json());
 
 app.use(express.urlencoded({extended: true}));
 
+app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
+
 const db = admin.firestore();
 
 app.post('/customers/create', async (req, res) => {
@@ -50,8 +58,11 @@ app.get('/customers/:id', async(req, res) => {
     try {
         const customerRef = db.collection('customers').doc(req.params.id);
         const response = await customerRef.get();
+
+        jsonResponse = response.data();
+        jsonResponse.id = response.id;
         
-        res.send(response.data());
+        res.send(jsonResponse);
     } catch (error) {
         res.send(error);
     }
