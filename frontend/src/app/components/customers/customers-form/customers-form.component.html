@@ -1,57 +1,41 @@
-<div *ngIf="customer$ | async as customer; else cadForm">
-    <form class="needs-validation" novalidate [formGroup]="form" style="padding-top: 10px">
-        <div class="form-row">
-        <div class="col-md-6 mb-3">
-            <label for="name">Nome</label>
-            <input type="text" class="form-control" id="name" placeholder="Nome" formControlName="name" [(ngModel)]="customer.name">
-        </div>
-        </div>
+<div class="form-container mat-elevation-z5" *ngIf="customer$ | async as customer; else cadForm">
+    <form novalidate [formGroup]="form">
+        <mat-form-field>
+            <input matInput type="text" id="name" placeholder="Nome" formControlName="name" [(ngModel)]="customer.name">
+        </mat-form-field>
     
-        <div class="form-row">
-        <div class="col-md-6 mb-3">
-            <label for="type">E-mail</label>
-            <input type="email" class="form-control" id="email" placeholder="E-mail" formControlName="email" [(ngModel)]="customer.email">
-        </div>
-        </div>
+        <mat-form-field>
+            <input matInput type="email" id="email" placeholder="E-mail" formControlName="email" [(ngModel)]="customer.email">
+        </mat-form-field>
 
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
-            <label for="type">Idade</label>
-            <input type="number" class="form-control" id="age" placeholder="Idade" formControlName="age" [(ngModel)]="customer.age">
-            </div>
-        </div>
+        <mat-form-field>
+            <input matInput type="number" id="age" placeholder="Idade" formControlName="age" [(ngModel)]="customer.age">
+        </mat-form-field>
     
-        <div style="margin-top: 10px">
-        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
+        <div class="center margin-top">
+            <button type="submit" mat-raised-button color="primary" (click)="onSubmit()">Atualizar</button>
         </div>
     </form>
 </div>
 
 <ng-template #cadForm>
-    <form class="needs-validation" novalidate [formGroup]="form" style="padding-top: 10px">
-        <div class="form-row">
-        <div class="col-md-6 mb-3">
-            <label for="name">Nome</label>
-            <input type="text" class="form-control" id="name" placeholder="Nome" formControlName="name">
-        </div>
-        </div>
+    <div class="form-container mat-elevation-z5">
+        <form class="needs-validation" novalidate [formGroup]="form">
+            <mat-form-field>
+                <input matInput type="text" id="name" placeholder="Nome" formControlName="name">
+            </mat-form-field>
+        
+            <mat-form-field>
+                <input matInput type="email" id="email" placeholder="E-mail" formControlName="email">
+            </mat-form-field>
     
-        <div class="form-row">
-        <div class="col-md-6 mb-3">
-            <label for="type">E-mail</label>
-            <input type="email" class="form-control" id="email" placeholder="E-mail" formControlName="email">
-        </div>
-        </div>
-
-        <div class="form-row">
-            <div class="col-md-6 mb-3">
-            <label for="type">Idade</label>
-            <input type="number" class="form-control" id="age" placeholder="Idade" formControlName="age">
+            <mat-form-field>
+                <input matInput type="number" id="age" placeholder="Idade" formControlName="age">
+            </mat-form-field>
+        
+            <div class="center margin-top">
+                <button type="submit" mat-raised-button color="primary" (click)="onSubmit()">Cadastrar</button>
             </div>
-        </div>
-    
-        <div style="margin-top: 10px">
-        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Salvar</button>
-        </div>
-    </form>
+        </form>
+    </div>
 </ng-template>

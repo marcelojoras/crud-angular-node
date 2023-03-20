@@ -1,10 +1,10 @@
 <h1>Detalhes do cliente</h1>
-<div class="mat-elevation-z5">
+<div class="mat-elevation-z5" style="padding: 20px;">
     <div *ngIf="customer$ | async as customer; else loadingError">
-        <p>ID: {{customer.id}}</p>
-        <p>Nome: {{customer.name}}</p>
-        <p>E-mail: {{customer.email}}</p>
-        <p>Idade: {{customer.age}}</p>
+        <p><b>ID:</b> {{customer.id}}</p>
+        <p><b>Nome:</b> {{customer.name}}</p>
+        <p><b>E-mail:</b> {{customer.email}}</p>
+        <p><b>Idade:</b> {{customer.age}}</p>
     </div>
 
     <ng-template #loadingError>

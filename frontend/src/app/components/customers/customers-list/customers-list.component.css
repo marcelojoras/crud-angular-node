@@ -1,0 +1,15 @@
+.container-table {
+    padding: 20px;
+}
+
+.table-data {
+    width: 100%;
+}
+
+.table-data th {
+    text-align: left;
+}
+
+.top-list {
+    justify-content: space-between;
+}

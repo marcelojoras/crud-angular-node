@@ -1,6 +1,11 @@
-<h1>Lista de clientes</h1>
-<div class="mat-elevation-z5">
-    <table class="table table-hover" *ngIf="customers$ | async as customers; else loadingError">
+<div class="top-list">
+    <h1>Lista de clientes</h1>
+    <button mat-raised-button color="primary" style="margin-bottom: 10px;" routerLink="create">
+        Adicionar Cliente
+    </button>
+</div>
+<div class="mat-elevation-z5 container-table">
+    <table class="table-data" *ngIf="customers$ | async as customers; else loadingError">
         <thead>
             <tr>
                 <th>Nome</th>
@@ -16,9 +21,9 @@
                 <td>{{customer.age}}</td>
                 <td>
                     <span class="float-right">
-                        <button class="btn btn-outline-primary mb-1 btn-sm" (click)="detalhesCustomer(customer.id)">Detalhes</button>
-                        <button class="btn btn-outline-warning mb-1 btn-sm" (click)="editarCustomer(customer.id)">Atualizar</button>
-                        <button class="btn btn-outline-danger mb-1 btn-sm" (click)="removerCustomer(customer)">Remover</button>
+                        <button mat-raised-button color="primary" style="margin-right: 10px;" (click)="detalhesCustomer(customer.id)">Detalhes</button>
+                        <button mat-raised-button color="primary" style="margin-right: 10px;" (click)="editarCustomer(customer.id)">Atualizar</button>
+                        <button mat-raised-button color="warn" (click)="removerCustomer(customer)">Remover</button>
                     </span>
                 </td>
             </tr>

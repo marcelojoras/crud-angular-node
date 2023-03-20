@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-    Login com o Firebase
+    Controle de clientes
 
     <ng-container *ngIf="authService.currentUser$ | async as user; else loginButton">
         <button mat-button (click)="logout()">
